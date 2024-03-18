@@ -1,0 +1,178 @@
+/* Reset some default margin and padding */
+body, h1, h2, p, input, button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Marlin Sans Extra Bold', sans-serif;
+    background-color: #56555c; /* Nobelium gray background color */
+    color: #000; /* Black text color */
+    overflow: hidden;
+}
+
+#navbar {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+    background-color: #333; /* Dark background for the navbar */
+    overflow: hidden;
+    position: fixed;
+    top: 20px;
+    width: calc(100% - 40px);
+    left: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    height: 80px;
+}
+
+
+#mainContainer {
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+#navbar a {
+    float: right;
+    color: #0066cc; /* Dark blue text color */
+    padding: 0 16px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: xx-large;
+    z-index: 2;
+    margin-top: auto; /* Reset margin for the buttons */
+    margin-bottom: auto; /* Reset margin for the buttons */
+}
+#navbar img{
+    margin-left: 0px;
+    margin-right: 850px;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 60px;
+    width: 60px;
+}
+
+#navbar a:hover {
+    background-color: #444; /* Darker background on hover */
+    color: #fff; /* White text color on hover */
+    border-radius: 10px;
+    z-index: 2;
+}
+
+h1 {
+    color: #0066cc; /* Dark blue text color */
+    font-size: 100px;
+    z-index: 2;
+}
+
+/* Style for the input */
+#search {
+    width: 60%;
+    padding: 10px;
+    margin: 20px auto;
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    display: flex;
+    background-color: #333;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
+    height: 70px;
+    z-index: 2;
+}
+
+
+
+#titleHeader {
+    color: #0066cc; /* Dark blue text color */
+    font-size: 100px;
+    z-index: 2;
+}
+
+input {
+    text-align: center;
+    z-index: 2;
+}
+
+::placeholder {
+    text-align: center;
+    color: #777; /* Gray placeholder text color */
+    z-index: 2;
+    font-size: larger;
+}
+
+
+/* Add these styles to your existing CSS file */
+.particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    background-color: blue; /* Change the color as needed */
+    width: 5px; /* Adjust the size as needed */
+    height: 5px; /* Adjust the size as needed */
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fallingParticle 5s linear infinite;
+    z-index: 1;
+}
+
+@keyframes fallingParticle {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+#pageHeader{
+    text-align: center;
+    margin-top: 100px;
+}
+
+/* Add these styles to your existing CSS file */
+
+button {
+    background-color: #333; /* Match the background color of the navbar */
+    border: none;
+    color: #fff; /* White text color */
+    padding: 20px 30px; /* Increase padding for a bigger button */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px; /* Increase font size for a bigger button */
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Add box-shadow transition */
+    margin: 10px; /* Add margin to create space between buttons */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add box shadow */
+}
+
+button:hover {
+    background-color: #444; /* Darker background on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increase box shadow on hover */
+}
+
+#gameContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the buttons horizontally */
+}
+
+#gameContainer button {
+    margin: 10px; /* Add margin to create space between buttons */
+}
+
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Nobelium | Home</title>
+    <script src="/uv/uv.config.js"></script>
+    <script src="/uv/uv.bundle.js"></script>
+    <script src="/uv/uv.handler.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            navigator.serviceWorker.register("/uv/uv.sw.js", {
+                scope: "/uv/service/",
+            });
+            console.log('SW Registered')
+            const address = document.getElementById("search");
+            function load() {
+                let input = address.value.trim();
+                // Check if the input contains spaces or has a known TLD
+                if (!input.includes(' ') && !input.match(/\.(com|org|net|edu|gov|mil|aero|asia|biz|cat|coop|info|int|jobs|mobi|museum|name|pro|tel|travel|arpa|root|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cs|cu|cv|cx|cy|cz|dd|de|dj|dk|dm|do|dz|ec|ee|eg|eh|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|me|mg|mh|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|om|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ro|rs|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sk|sl|sm|sn|so|sr|ss|st|su|sv|sx|sy|sz|tc|td|tf|tg|th|tj|tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw)$/i)) {
+                    // If not, treat it as a regular search
+                    input = `https://www.google.com/search?q=${encodeURIComponent(input)}`;
+                } else if (!/^(http|https):\/\//i.test(input)) {
+                    // If it doesn't start with http:// or https://, prepend "http://"
+                    input = `http://${input}`;
+                }
+                // Redirect to the processed URL
+                window.location.href = `${window.location.origin}/uv/service/${Ultraviolet.codec.xor.encode(input)}`;
+            }
+            address.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    load();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="navbar">
+        <img src="images/logo.png" alt="Logo" id="navbar-image">
+        <a href="games.html">Games</a>
+        <a href="main.html">Home</a>
+        <a href="apps.html">Apps</a>
+    </div>
+    
+    <div id="mainContainer">
+        <h1 id="titleHeader">Nobelium</h1>
+        <input type="text" id="search" placeholder="Type URL here, or make a Google search">
+    </div>
+
+    <div id="particle-container" class="particle-container"></div>
+
+    <script src="scripts/particles.js"></script>
+</body>
+</html>
