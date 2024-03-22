@@ -11,7 +11,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             navigator.serviceWorker.register("/uv/uv.sw.js", {
-                scope: "/uv/",
+                scope: "/uv/service/",
             });
             console.log('SW Registered')
             const address = document.getElementById("search");
