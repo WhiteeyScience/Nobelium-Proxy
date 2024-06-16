@@ -8,8 +8,8 @@ import { hostname } from "node:os";
 const bare = createBareServer("/bare/");
 const app = express();
 
-app.use(express.static("public"));
 app.use("/uv/", express.static(uvPath));
+app.use(express.static("public"));
 app.use((req, res) => {
   const url = req.url.substring(1); // Remove the leading '/'
 
